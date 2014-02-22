@@ -34,7 +34,8 @@
             var control = L.control.layers(layers);
             control.addTo(map);
             $.getJSON("./blr1.geojson", function(data) {
-                console.log(data);
+                var geoLayer = L.geoJson(data);
+                geoLayer.addTo(map);
             });
         </script>
     </body>
