@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TOL Training Page</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
+        <script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
+        <script src="http://api-maps.yandex.ru/2.0/?load=package.map&lang=ru-RU" type="text/javascript"></script>
+        <script src="./yandex.js"></script>
+        <style>
+            #ourMap {
+                position: absolute;
+                top: 0px;
+                bottom: 0px;
+                left: 0px;
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="ourMap"></div>
+        <script>
+            var map = L.map("ourMap");
+            map.setView([54, 27.7], 6);
+            var layer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png');
+            layer.addTo(map);
+            var tonerLayer = L.tileLayer('http://a.tile.stamen.com/toner/{z}/{x}/{y}.png');
+            tonerLayer.addTo(map);
+            var yandexLayer = new L.Yandex();
+            var layerControl = L.control.layers({
+                "OpenStreet Map": layer,
+                "Stamen Toner Map": tonerLayer,
+                "Yandex Map": yandexLayer
+            });
+            layerControl.addTo(map);
+        </script>
+    </body>
+</html>
