@@ -43,6 +43,9 @@
                         var percent = (aboveMinimum / disparity);
                         var color = Math.round(255 * percent);
                         return {color: "rgb(255, " + color + ", " + color + ")"};
+                     },
+                     onEachFeature: function(feature, layer) {
+                        layer.bindPopup("In " + feature.properties.NAME_1 + " region, the average wage is " + feature.properties.wage + " BYL.");
                      }
                  });
                 geoLayer.addTo(map);
