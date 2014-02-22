@@ -2,6 +2,8 @@
     <head>
         <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
         <script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
+        <script src="http://maps.google.com/maps/api/js?v=3&amp;sensor=false"></script>
+        <script src="./plugins/Google.js"></script>
         <style>
             #map {
                 position: absolute;
@@ -22,7 +24,8 @@
             layer.addTo(map);
             var layers = {
                 osm: layer,
-                toner: L.tileLayer('http://a.tile.stamen.com/toner/{z}/{x}/{y}.png')
+                toner: L.tileLayer('http://a.tile.stamen.com/toner/{z}/{x}/{y}.png'),
+                google: new L.Google(),
             };
             var control = L.control.layers(layers);
             control.addTo(map);
