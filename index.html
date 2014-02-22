@@ -17,6 +17,9 @@
         </div>
         <script>
             var map = L.map('map');
+            map.setView([53.913, 27.652], 6);
+            var layer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png');
+            layer.addTo(map);
         </script>
     </body>
 </html>
