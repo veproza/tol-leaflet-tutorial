@@ -34,13 +34,15 @@
             var control = L.control.layers(layers);
             control.addTo(map);
             $.getJSON("./blr1.geojson", function(data) {
+                var max = 3659952;
+                var min = 3185284;
+                var disparity = max - min;
                 var geoLayer = L.geoJson(data, {
                      style: function(region) {
-                        if(region.properties.NAME_1 == "Brest") {
-                            return {color: "rgb(255, 0, 0)"}
-                        } else {
-                            return {color: "rgb(255, 255, 255)"}
-                        }
+                        var aboveMinimum = region.properties.wage - min;
+                        var percent = (aboveMinimum / disparity);
+                        var color = Math.round(255 * percent);
+                        return {color: "rgb(255, " + color + ", " + color + ")"};
                      }
                  });
                 geoLayer.addTo(map);
