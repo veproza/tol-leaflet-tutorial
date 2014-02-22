@@ -25,7 +25,7 @@
             var layers = {
                 osm: layer,
                 toner: L.tileLayer('http://a.tile.stamen.com/toner/{z}/{x}/{y}.png'),
-                google: new L.Google(),
+                google: new L.Google('TERRAIN'),
             };
             var control = L.control.layers(layers);
             control.addTo(map);
