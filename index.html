@@ -34,7 +34,15 @@
             var control = L.control.layers(layers);
             control.addTo(map);
             $.getJSON("./blr1.geojson", function(data) {
-                var geoLayer = L.geoJson(data);
+                var geoLayer = L.geoJson(data, {
+                     style: function(region) {
+                        if(region.properties.NAME_1 == "Brest") {
+                            return {color: "rgb(255, 0, 0)"}
+                        } else {
+                            return {color: "rgb(255, 255, 255)"}
+                        }
+                     }
+                 });
                 geoLayer.addTo(map);
             });
         </script>
