@@ -45,7 +45,7 @@
                         return {color: "rgb(255, " + color + ", " + color + ")"};
                      },
                      onEachFeature: function(feature, layer) {
-                        layer.bindPopup("In " + feature.properties.NAME_1 + " region, the average wage is " + feature.properties.wage + " BYL.");
+                        layer.bindPopup("In " + feature.properties.NAME_1 + " region, the monthly average wage is " + Math.round (feature.properties.wage / 12) + " BYL.");
                      }
                  });
                 geoLayer.addTo(map);
