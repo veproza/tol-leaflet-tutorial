@@ -20,6 +20,12 @@
             map.setView([53.913, 27.652], 6);
             var layer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png');
             layer.addTo(map);
+            var layers = {
+                osm: layer,
+                toner: L.tileLayer('http://a.tile.stamen.com/toner/{z}/{x}/{y}.png')
+            };
+            var control = L.control.layers(layers);
+            control.addTo(map);
         </script>
     </body>
 </html>
