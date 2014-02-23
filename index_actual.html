@@ -19,6 +19,7 @@
     </head>
     <body>
         <div id="ourMap"></div>
+        <script src='belarus.geojson'></script>
         <script>
             var map = L.map("ourMap");
             map.setView([54, 27.7], 6);
@@ -33,6 +34,28 @@
                 "Yandex Map": yandexLayer
             });
             layerControl.addTo(map);
+            var myIcon = L.icon({
+                iconUrl: "lenin.jpg",
+                iconSize: [65, 75],
+                iconAnchor: [32, 36]
+            });
+            var coords = [
+                [54, 27],
+                [55, 27],
+                [55, 28],
+                [54, 28]
+            ];
+            for(var i = 0; i < coords.length; i = i + 1) {
+                L.marker(coords[i]).addTo(map);
+            }
+            var geoLayer = L.geoJson(belarusShapefile, {
+                style: function(region) {
+                    var lightness = region.properties.wage / 40;
+                    var color = Math.round(255 * lightness);
+                    return {color: "rgb(" + color + ", " + color + ", " + color + ")"}
+                }
+            });
+            geoLayer.addTo(map);
         </script>
     </body>
 </html>
